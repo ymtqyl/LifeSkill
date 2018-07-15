@@ -126,12 +126,12 @@ class LifeSkill(Bot):
         """
         bodyTemplate = BodyTemplate1()
         bodyTemplate.setBackGroundImage(self.lifebackGroundImage)
-        bodyTemplate.setPlainTextContent(r'欢迎使用生活小技巧！在这里，您可以了解到关于旅游、实用、居家、照顾婴儿等生活上的小技巧。试着对我说“居家小技巧”')
+        bodyTemplate.setPlainTextContent(r'欢迎使用生活小技巧！在这里，您可以了解到关于旅游、实用、居家、照顾婴儿等小技巧。试着对我说“居家小技巧”')
 
         directive = RenderTemplate(bodyTemplate)
         return {
             'directives': [directive],
-            'outputSpeech': r'欢迎使用生活小技巧！在这里，您可以了解到关于外l旅游、实用、居家、照顾婴儿等生活上的小技巧。试着对我说，居家小技巧，'
+            'outputSpeech': r'欢迎使用生活小技巧！在这里，您可以了解到关于外l旅游、实用、居家、照顾婴儿等小技巧。试着对我说，居家小技巧，'
         }
 
     def outside_skill(self):
@@ -173,7 +173,36 @@ class LifeSkill(Bot):
         实用小技巧
         :return:
         """
-        pass
+        """
+        外出小技巧
+        :return: 
+        """
+        ask = getSlots('trip_dict')
+        if not ask:
+            self.nlu.ask('ask')
+            card = StandardCard()
+            card.setContent(r'请问您想了解些什么实用的小技巧呢？试着对我问一些问题')
+            return {
+                'card': card,
+                'outputSpeech': r'请问您想了解些什么实用的小技巧呢？试着对我问一些问题'
+            }
+        else:
+            try:
+                answer = self.useful_ask['ask']
+            except KeyError:
+                return {
+                    'outputSpeech': r'对不起，我还不知道呢'
+                }
+            else:
+                bodyTemplate = BodyTemplate1()
+                bodyTemplate.setBackGroundImage(self.lifebackGroundImage)
+                bodyTemplate.setPlainTextContent(answer)
+                bodyTemplate.setTitle(ask)
+                directive = RenderTemplate(bodyTemplate)
+                return {
+                    'directives': [directive],
+                    'outputSpeech': answer
+                }
 
     def home_skill(self):
 
@@ -181,7 +210,36 @@ class LifeSkill(Bot):
         居家小技巧
         :return:
         """
-        pass
+        """
+        外出小技巧
+        :return: 
+        """
+        ask = getSlots('home_dict')
+        if not ask:
+            self.nlu.ask('ask')
+            card = StandardCard()
+            card.setContent(r'请问您想了解些什么居家的小技巧呢？试着对我问一些问题')
+            return {
+                'card': card,
+                'outputSpeech': r'请问您想了解些什么居家的小技巧呢？试着对我问一些问题'
+            }
+        else:
+            try:
+                answer = self.outside_ask['ask']
+            except KeyError:
+                return {
+                    'outputSpeech': r'对不起，我还不知道呢'
+                }
+            else:
+                bodyTemplate = BodyTemplate1()
+                bodyTemplate.setBackGroundImage(self.lifebackGroundImage)
+                bodyTemplate.setPlainTextContent(answer)
+                bodyTemplate.setTitle(ask)
+                directive = RenderTemplate(bodyTemplate)
+                return {
+                    'directives': [directive],
+                    'outputSpeech': answer
+                }
 
     def kid_skill(self):
 
@@ -189,7 +247,36 @@ class LifeSkill(Bot):
         照顾婴儿小技巧
         :return:
         """
-        pass
+        """
+        外出小技巧
+        :return: 
+        """
+        ask = getSlots('kid_dict')
+        if not ask:
+            self.nlu.ask('ask')
+            card = StandardCard()
+            card.setContent(r'请问您想了解些什么照顾婴儿小技巧呢？试着对我问一些问题')
+            return {
+                'card': card,
+                'outputSpeech': r'请问您想了解些什么照顾婴儿小技巧呢？试着对我问一些问题'
+            }
+        else:
+            try:
+                answer = self.kid_ask['ask']
+            except KeyError:
+                return {
+                    'outputSpeech': r'对不起，我还不知道呢'
+                }
+            else:
+                bodyTemplate = BodyTemplate1()
+                bodyTemplate.setBackGroundImage(self.lifebackGroundImage)
+                bodyTemplate.setPlainTextContent(answer)
+                bodyTemplate.setTitle(ask)
+                directive = RenderTemplate(bodyTemplate)
+                return {
+                    'directives': [directive],
+                    'outputSpeech': answer
+                }
 
     def welcome(self):
 
