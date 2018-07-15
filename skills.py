@@ -195,7 +195,7 @@ class LifeSkill(Bot):
                 }
             else:
                 bodyTemplate = BodyTemplate1()
-                bodyTemplate.setBackGroundImage(self.lifebackGroundImage)
+                bodyTemplate.setBackGroundImage(self.usefulbackGroundImage)
                 bodyTemplate.setPlainTextContent(answer)
                 bodyTemplate.setTitle(ask)
                 directive = RenderTemplate(bodyTemplate)
@@ -269,7 +269,7 @@ class LifeSkill(Bot):
                 }
             else:
                 bodyTemplate = BodyTemplate1()
-                bodyTemplate.setBackGroundImage(self.lifebackGroundImage)
+                bodyTemplate.setBackGroundImage(self.kidbackGroundImage)
                 bodyTemplate.setPlainTextContent(answer)
                 bodyTemplate.setTitle(ask)
                 directive = RenderTemplate(bodyTemplate)
