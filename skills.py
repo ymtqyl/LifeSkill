@@ -274,7 +274,7 @@ class LifeSkill(Bot):
                 bodyTemplate.setTitle(ask)
                 directive = RenderTemplate(bodyTemplate)
                 return {
-                    'directives': [directive],
+                    
                     'outputSpeech': answer
                 }
 
@@ -284,4 +284,13 @@ class LifeSkill(Bot):
         使用介绍
         :return:
         """
-        pass
+        bodyTemplate = BodyTemplate1()
+        bodyTemplate.setBackGroundImage(self.lifeGroundImage)
+        bodyTemplate.setPlainTextContent(r'欢迎来到生活小技巧，您可以在这里了解到关于生活、居家、照顾婴儿等小技巧，试着对我说“居家小技巧”)
+        bodyTemplate.setTitle(r'生活小技巧使用手册')
+        directive = RenderTemplate(bodyTemplate)
+        return {
+            'directives': [directive],
+            'outputSpeech': r'欢迎来到生活小技巧，您可以在这里了解到关于生活、居家、照顾婴儿等小技巧，试着对我说，居家小技巧，'
+        }
+                 
